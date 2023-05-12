@@ -23,11 +23,11 @@ WORKDIR /app
 
 # Copy the pom.xml file to the container
 COPY pom.xml ./
-COPY src/main/java/demo/pom.xml ./spring-boot/
+COPY src/main/demo/pom.xml ./spring-boot/
 
 # Copy the source code to the container
 COPY src ./src
-COPY src/main/java/demo/src ./spring-boot/src/
+COPY src/main/demo/src ./spring-boot/src/
 
 # Build the project and create the JAR file
 RUN mvn clean package
@@ -37,4 +37,4 @@ RUN mvn -f ./spring-boot/pom.xml clean package
 EXPOSE 8080
 
 # Run the container right after the build
-CMD ["java", "-jar", "./spring-boot/target/spring-boot.jar"]
+CMD ["java" , "-jar", "./spring-boot/target/demo-0.0.1-SNAPSHOT.jar"]
