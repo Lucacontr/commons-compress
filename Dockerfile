@@ -30,7 +30,7 @@ COPY src ./src
 COPY src/main/demo/src ./spring-boot/src/
 
 # Build the project and create the JAR file
-RUN mvn clean package
+RUN mvn clean install
 RUN mvn -f ./spring-boot/pom.xml clean package
 
 # expose the service on the port 8080

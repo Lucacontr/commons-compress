@@ -407,6 +407,7 @@ Brotli, Zstandard and ar, cpio, jar, tar, zip, dump, 7z, arj.
               <exclude>.projectile</exclude>
               <exclude>.mvn/**</exclude>
               <exclude>.gitattributes</exclude>
+              <exclude>src/main/demo/**</exclude>
             </excludes>
           </configuration>
         </plugin>
