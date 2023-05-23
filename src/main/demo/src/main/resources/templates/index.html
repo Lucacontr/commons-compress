@@ -21,10 +21,28 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     </head>
     <body>
-        <h3>Inserisci il file da processare</h3>
-        <form method="POST" action="/compress" enctype="multipart/form-data">
+        <h3>Seleziona il metodo ed inserisci il file da comprimere</h3>
+        <form id="compressForm" method="POST" action="/compress" enctype="multipart/form-data">
+            <input type="radio" name="actionType" value="tar"> Tar <br><br>
+            <input type="radio" name="actionType" value="zip"> Zip <br><br>
+            <input type="radio" name="actionType" value="gzip"> Gzip <br><br>
+            <input type="radio" name="actionType" value="bzip2"> Bzip2 <br><br>
+
             <input type="file" id="fileToCompress" name="fileToCompress">
             <button type="submit">Upload</button>
         </form>
+
+        <script>
+            var form = document.getElementById('compressForm');
+            var radioButtons = document.querySelectorAll('input[name="actionType"]');
+
+            for (var i = 0; i < radioButtons.length; i++) {
+                radioButtons[i].addEventListener('change', function() {
+                    var selectedOption = document.querySelector('input[name="actionType"]:checked').value;
+                    console.log(selectedOption)
+                    form.action = "/compress/" + selectedOption;
+                });
+            }
+        </script>
     </body>
 </html>
